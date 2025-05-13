@@ -1,35 +1,76 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Aqui você pode lidar com o login manualmente (ex: envio para uma API)
+    alert('Formulário enviado!');
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <main className="login-container">
+      <header>
+        <h1>Bem-vindo</h1>
+        <p className="subtitle">Faça login para continuar</p>
+      </header>
+
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="email">Email ou Usuário</label>
+          <div className="input-group">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Seu email ou nome de usuário"
+              required
+              autoFocus
+            />
+          </div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="password">Senha</label>
+          <div className="input-group">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Senha"
+              required
+            />
+          </div>
+        </div>
+
+        <div className="forgot-password">
+          <a href="/recuperar-senha">Esqueceu sua senha?</a>
+        </div>
+
+        <div className="options">
+          <div className="remember-me">
+            <input type="checkbox" id="remember" name="remember" />
+            <label htmlFor="remember">Lembrar-me</label>
+          </div>
+        </div>
+
+        <button type="submit">Entrar</button>
+      </form>
+
+      <div className="divider">
+        <span>Ou continue</span>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div className="social-login">
+        <a href="#" className="social-btn" aria-label="Entrar com google">G</a>
+        <a href="#" className="social-btn" aria-label="Entrar com facebook">F</a>
+        <a href="#" className="social-btn" aria-label="Entrar com apple">A</a>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      <div className="signup-link">
+        Não tem uma conta? <a href="/cadastro">Criar conta</a>
+      </div>
+    </main>
+  );
 }
 
-export default App
+export default App;
